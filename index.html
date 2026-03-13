@@ -94,7 +94,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1.2rem 0;
+      padding: 1.2rem 0 0;
+      margin-top: 1.4rem;
       border-bottom: 1px solid var(--line);
     }
 
@@ -191,6 +192,14 @@
       display: block;
       color: var(--gold);
       font-style: italic;
+    }
+
+    .title-neon {
+      color: var(--text);
+      text-shadow:
+        0 0 1px rgba(255, 79, 183, 0.75),
+        0 0 8px rgba(255, 79, 183, 0.24),
+        0 0 16px rgba(255, 79, 183, 0.14);
     }
 
     .intro {
@@ -291,11 +300,10 @@
     }
 
     .art-link.main {
-      inset: 3.4rem 4.2rem 4rem 6.6rem;
+      inset: 1.4rem 1.4rem 1.4rem 1.4rem;
       border-radius: 0.2rem;
       border: 1px solid rgba(243, 223, 190, 0.16);
-      background-image: url("g5emop0b27.jpeg");
-      background-position: 54% 18%;
+      background: #160b13;
     }
 
     .art-link.accent {
@@ -306,6 +314,15 @@
       border: 1px solid rgba(243, 223, 190, 0.22);
       background-image: url("dbko4byb1h.jpeg");
       background-position: center center;
+    }
+
+    .art-video-main {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 26%;
+      filter: saturate(1.02) contrast(1.03);
     }
 
     .art-panel::before {
@@ -817,7 +834,7 @@
       }
 
       .art-link.main {
-        inset: 3rem 3rem 3.8rem 3rem;
+        inset: 1rem;
       }
 
       .art-photo-accent {
@@ -856,7 +873,7 @@
       }
 
       .art-link.main {
-        inset: 2.2rem 1.2rem 5.5rem 1.2rem;
+        inset: 0.85rem;
       }
 
       .art-photo-accent {
@@ -889,21 +906,11 @@
 </head>
 <body>
   <main class="page">
-    <header class="topbar">
-      <div class="brand">Pink Nitro Private Edition</div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#presence">Presence</a>
-        <a href="#ode">Ode</a>
-        <a href="#myth">Myth</a>
-        <a href="#socials">Links</a>
-      </nav>
-    </header>
-
     <section class="hero" id="presence">
       <div>
         <p class="eyebrow">For Pink Nitro, the dancer who calls herself a goddess</p>
         <h1>
-          Pink Nitro
+          <span class="title-neon">Pink Nitro</span>
           <span>after dark</span>
         </h1>
         <p class="intro">
@@ -923,8 +930,9 @@
         <div class="stage-arch"></div>
         <div class="neon-orb pink"></div>
         <div class="neon-orb cyan"></div>
-        <a class="art-link main" href="https://www.instagram.com/pinknitro/" target="_blank" rel="noreferrer" aria-label="Open Pink Nitro Instagram"></a>
-        <a class="art-link accent" href="https://www.instagram.com/pinknitro/" target="_blank" rel="noreferrer" aria-label="Open Pink Nitro Instagram"></a>
+        <a class="art-link main" href="https://www.tiktok.com/@pinknitro1" target="_blank" rel="noreferrer" aria-label="Open Pink Nitro TikTok">
+          <video class="art-video-main" src="ssstik.io_1773371395477.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </a>
         <div class="constellation">
           <span></span>
           <span></span>
@@ -935,6 +943,16 @@
         </div>
       </div>
     </section>
+
+    <header class="topbar">
+      <div class="brand">Pink Nitro Private Edition</div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#presence">Presence</a>
+        <a href="#ode">Ode</a>
+        <a href="#myth">Myth</a>
+        <a href="#socials">Links</a>
+      </nav>
+    </header>
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">

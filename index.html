@@ -753,6 +753,48 @@
       box-shadow: 0 0 22px rgba(255, 79, 183, 0.12), var(--shadow);
     }
 
+    .of-image-gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30rem;
+      padding: 1.6rem;
+      text-align: center;
+    }
+
+    .of-image-gate-copy {
+      max-width: 22rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    .of-image-gate-copy p {
+      margin-bottom: 1rem;
+    }
+
+    .of-image-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .of-image-link {
+      display: none;
+      min-height: 30rem;
+    }
+
+    .of-image-link.active {
+      display: block;
+    }
+
+    .of-image-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .social-panel img {
       width: 100%;
       height: 100%;
@@ -1346,9 +1388,20 @@
           </div>
         </div>
 
-        <a class="social-panel image-panel" href="https://onlyfans.com/pinknitro" target="_blank" rel="noreferrer" aria-label="Open Pink Nitro OnlyFans">
-          <img src="20260313_02h19m58s_grim.png" alt="Promotional image for Pink Nitro's OnlyFans profile.">
-        </a>
+        <div class="social-panel image-panel">
+          <div class="of-image-gate" id="of-image-gate">
+            <div class="of-image-gate-copy">
+              <p>OnlyFans image preview is hidden. Are you 18+?</p>
+              <div class="of-image-actions">
+                <button class="age-btn" type="button" id="of-image-yes">Yes</button>
+                <button class="age-btn" type="button" id="of-image-no">No</button>
+              </div>
+            </div>
+          </div>
+          <a class="of-image-link" id="of-image-link" href="https://onlyfans.com/pinknitro" target="_blank" rel="noreferrer" aria-label="Open Pink Nitro OnlyFans">
+            <img src="20260313_02h19m58s_grim.png" alt="Promotional image for Pink Nitro's OnlyFans profile.">
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1364,6 +1417,10 @@
     const ageNo = document.getElementById("age-no");
     const onlyFansLink = document.getElementById("of-link");
     const deniedLabel = document.getElementById("of-denied");
+    const ofImageGate = document.getElementById("of-image-gate");
+    const ofImageYes = document.getElementById("of-image-yes");
+    const ofImageNo = document.getElementById("of-image-no");
+    const ofImageLink = document.getElementById("of-image-link");
 
     if (revealButton && ageGate && ageYes && ageNo && onlyFansLink && deniedLabel) {
       revealButton.addEventListener("click", () => {
@@ -1381,6 +1438,17 @@
         ageGate.classList.remove("active");
         deniedLabel.textContent = "Access denied.";
         deniedLabel.classList.add("active");
+      });
+    }
+
+    if (ofImageGate && ofImageYes && ofImageNo && ofImageLink) {
+      ofImageYes.addEventListener("click", () => {
+        ofImageGate.style.display = "none";
+        ofImageLink.classList.add("active");
+      });
+
+      ofImageNo.addEventListener("click", () => {
+        ofImageGate.innerHTML = '<div class="of-image-gate-copy"><p>Access denied.</p></div>';
       });
     }
   </script>

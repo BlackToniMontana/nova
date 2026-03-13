@@ -435,6 +435,105 @@
       animation: marquee 22s linear infinite;
     }
 
+    .link-index {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 1.5rem;
+      padding: 1.6rem 0 2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .link-index-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .link-index-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .link-row {
+      display: grid;
+      grid-template-columns: 11rem 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: var(--shadow);
+    }
+
+    .link-row strong {
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .link-row a,
+    .link-row span {
+      color: var(--text-soft);
+      word-break: break-all;
+      text-decoration: none;
+    }
+
+    .link-row a:hover {
+      color: #ffd7f0;
+    }
+
+    .reveal-btn,
+    .age-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.72rem 1rem;
+      border: 1px solid rgba(255, 79, 183, 0.38);
+      background: rgba(255, 79, 183, 0.08);
+      color: #fff1fa;
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .reveal-btn:hover,
+    .age-btn:hover {
+      box-shadow: 0 0 18px rgba(255, 79, 183, 0.16);
+    }
+
+    .of-state {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .age-gate {
+      display: none;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      color: var(--text-soft);
+    }
+
+    .age-gate.active {
+      display: flex;
+    }
+
+    .of-link {
+      display: none;
+      color: #ffd7f0;
+    }
+
+    .of-link.active {
+      display: inline;
+    }
+
     .section {
       padding: 4.8rem 0;
       border-bottom: 1px solid var(--line);
@@ -811,6 +910,7 @@
 
     @media (max-width: 980px) {
       .hero,
+      .link-index,
       .section-header,
       .manifesto,
       .cards,
@@ -897,6 +997,10 @@
         width: 100%;
       }
 
+      .link-row {
+        grid-template-columns: 1fr;
+      }
+
       .manifest-list li {
         flex-direction: column;
         gap: 0.4rem;
@@ -970,6 +1074,36 @@
         <span>Luxury Glow</span>
       </div>
     </div>
+
+    <section class="link-index" aria-label="Creator links">
+      <div class="link-index-title">Links Index</div>
+      <div class="link-index-list">
+        <div class="link-row">
+          <strong>Instagram</strong>
+          <a href="https://www.instagram.com/pinknitro/" target="_blank" rel="noreferrer">instagram.com/pinknitro</a>
+          <span></span>
+        </div>
+        <div class="link-row">
+          <strong>TikTok</strong>
+          <a href="https://www.tiktok.com/@pinknitro1" target="_blank" rel="noreferrer">tiktok.com/@pinknitro1</a>
+          <span></span>
+        </div>
+        <div class="link-row">
+          <strong>OnlyFans</strong>
+          <div class="of-state">
+            <button class="reveal-btn" type="button" id="of-reveal">Reveal Link</button>
+            <div class="age-gate" id="age-gate">
+              <span>Are you 18+?</span>
+              <button class="age-btn" type="button" id="age-yes">Yes</button>
+              <button class="age-btn" type="button" id="age-no">No</button>
+            </div>
+            <a class="of-link" id="of-link" href="https://onlyfans.com/pinknitro" target="_blank" rel="noreferrer">onlyfans.com/pinknitro</a>
+            <span class="of-link" id="of-denied">Access denied.</span>
+          </div>
+          <span></span>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="ode">
       <div class="section-header">
@@ -1128,5 +1262,32 @@
       <p>For Pink Nitro, who makes every room look like it was booked for her entrance.</p>
     </footer>
   </main>
+  <script>
+    const revealButton = document.getElementById("of-reveal");
+    const ageGate = document.getElementById("age-gate");
+    const ageYes = document.getElementById("age-yes");
+    const ageNo = document.getElementById("age-no");
+    const onlyFansLink = document.getElementById("of-link");
+    const deniedLabel = document.getElementById("of-denied");
+
+    if (revealButton && ageGate && ageYes && ageNo && onlyFansLink && deniedLabel) {
+      revealButton.addEventListener("click", () => {
+        deniedLabel.classList.remove("active");
+        ageGate.classList.add("active");
+      });
+
+      ageYes.addEventListener("click", () => {
+        ageGate.classList.remove("active");
+        revealButton.style.display = "none";
+        onlyFansLink.classList.add("active");
+      });
+
+      ageNo.addEventListener("click", () => {
+        ageGate.classList.remove("active");
+        deniedLabel.textContent = "Access denied.";
+        deniedLabel.classList.add("active");
+      });
+    }
+  </script>
 </body>
 </html>
